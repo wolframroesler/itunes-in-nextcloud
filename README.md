@@ -42,11 +42,11 @@ Now, move the folders where iTunes stores its files into that directory, and mak
 ```sh
 $ cd "~/Music/iTunes/iTunes Media"
 $ for i in Books Downloads "Home Videos" "Mobile Applications" Movies Music Tones "Voice Memos"; do
->   mv $i ~/Nextcloud/iTunes && ln -s "~/Nextcloud/iTunes/$i" .
+>   mv "$i" ~/Nextcloud/iTunes && ln -s "~/Nextcloud/iTunes/$i" .
 > done
 ```
 
-This will process your iTunes media files (videos, music, etc.) Leave out what you don't want in your Nextcloud (for example, if you don't want purchased movies in Nextcloud, remove Movies from the "for" line.
+This will process your iTunes media files (videos, music, etc.) Leave out what you don't want in your Nextcloud (for example, if you don't want purchased movies in Nextcloud, remove Movies from the "for" line).
 
 Your folder now looks something like this:
 
