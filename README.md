@@ -79,3 +79,5 @@ lrwxr-xr-x  1 wolfram  staff  39  2 Mär 19:41 Backup -> /Users/wolfram/Nextclou
 As soon as you move a directory, the Nextcloud software will start uploading it to your cloud server.
 
 Finally, start iTunes again. Enjoy.
+
+*Wolfram Rösler • wolfram@roesler-ac.de • https://twitter.com/wolframroesler • https://github.com/wolframroesler*
