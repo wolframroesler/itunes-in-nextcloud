@@ -12,12 +12,6 @@ This guide was developed using:
 * iTunes 12.5.5.5
 * Nextcloud 2.2.4
 
-## How it works
-
-To back up the iTunes files to Nextcloud we'll first move them into Nextcloud, and then we'll set up symbolic links to make them accessable from where iTunes expects them.
-
-Note that we cannot do it the other way around (as we could with Dropbox), i. e. put a symbolic link in the Nextcloud folder that links to the iTunes files, since the Nextcloud client software won't follow symbolic links.
-
 ## Before you start
 
 Do this at your own risk. Make sure you have a good backup in case you mess up something, or in case there's a bug in this document. Time Machine is your friend. Read and understand the shell command lines before executing them.
@@ -26,58 +20,49 @@ Make sure you have enough space available in your Nextcloud.
 
 Please note that the following serves as a backup of your iTunes data. It is not suitable for sharing your iTunes files across several iTunes instances; trying to do so will most certainly mess things up badly.
 
-## How to do it
+Also, please note that the following is for backup, not for sharing. You will not be able to use your iTunes media on two different Macs, for example.
 
-First of all, shut down iTunes.
+## How it does not work
 
-Make the directory where we will put the iTunes files. Name this whatever you want, but put it inside your ~/Nextcloud folder (optionally in a sub-directory):
-
-````sh
-$ cd ~/Nextcloud
-$ mkdir iTunes
-````
-
-Now, move the folders where iTunes stores its files into that directory, and make symbolic links so iTunes still finds them:
+The first idea is to create symlinks to the iTunes directories from your cloud-synced folder, for example:
 
 ```sh
+$ cd ~/Dropbox
+$ mkdir iTunes
+$ cd iTunes
+$ for i in Books Downloads "Home Videos" "Mobile Applications" Movies Music Tones "Voice Memos"; do
+>   ln -s "~/Music/iTunes/iTunes Media/$i" .
+> done
+```
+
+This will work fine with Dropbox (as shown above) but not with Nextcloud because the Nextcloud client software doesn't follow symlinks.
+
+The second idea is to to it the other way around, move your iTunes folders into a cloud-synced directory and set up symlink to make iTunes find them:
+
+```sh
+$ cd ~/Nextcloud
+$ mkdir iTunes
 $ cd "~/Music/iTunes/iTunes Media"
 $ for i in Books Downloads "Home Videos" "Mobile Applications" Movies Music Tones "Voice Memos"; do
 >   mv "$i" ~/Nextcloud/iTunes && ln -s "~/Nextcloud/iTunes/$i" .
 > done
 ```
 
-This will process your iTunes media files (videos, music, etc.) Leave out what you don't want in your Nextcloud (for example, if you don't want purchased movies in Nextcloud, remove Movies from the "for" line).
+This will back up your iTunes files to Nextcloud all right, but will break stuff in iTunes. For example, you'll still be able to play music, but dragging mp3 files into iTunes will fails with an error message. Bummer.
 
-Your folder now looks something like this:
+## Mobile Device Backups
 
-```
-$ ls -l
-total 32
-drwxr-xr-x    4 wolfram  staff    136 21 Jan 22:42 Automatically Add to iTunes.localized
-lrwxr-xr-x    1 wolfram  staff     44 20 Feb 18:28 Home Videos -> /Users/wolfram/Nextcloud/iTunes/Home Videos/
-lrwxr-xr-x    1 wolfram  staff     38 19 Feb 15:00 Music -> /Users/wolfram/Nextcloud/iTunes/Music/
-lrwxr-xr-x    1 wolfram  staff     38 19 Feb 14:23 Tones -> /Users/wolfram/Nextcloud/iTunes/Tones/
-lrwxr-xr-x    1 wolfram  staff     44 19 Feb 14:27 Voice Memos -> /Users/wolfram/Nextcloud/iTunes/Voice Memos/
-...
-```
-
-Then, do the same for the mobile backups, which are in a separate directory:
+The symlink-into-Nextcloud works fine with mobile backups, however:
 
 ```sh
 $ cd "~/Library/Application Support/MobileSync"
 $ mv Backup && ~/Nextcloud/iTunes && ln -s ~/Nextcloud/iTunes/Backup/ .
 ```
 
-So you get this:
+iTunes doesn't mind having a symlink here, so iPhone/iPad/iPod backups go into the cloud just fine.
 
-```
-$ ls -l
-total 8
-lrwxr-xr-x  1 wolfram  staff  39  2 Mär 19:41 Backup -> /Users/wolfram/Nextcloud/iTunes/Backup/
-```
+## How it works
 
-As soon as you move a directory, the Nextcloud software will start uploading it to your cloud server.
-
-Finally, start iTunes again. Enjoy.
+Still working it out. Please come back later.
 
 *Wolfram Rösler • wolfram@roesler-ac.de • https://twitter.com/wolframroesler • https://github.com/wolframroesler*
