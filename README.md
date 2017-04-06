@@ -70,7 +70,7 @@ The symlink-into-Nextcloud works fine with mobile backups, however:
 
 ```sh
 $ cd "~/Library/Application Support/MobileSync"
-$ mv Backup && ~/Nextcloud/iTunes && ln -s ~/Nextcloud/iTunes/Backup/ .
+$ mv Backup ~/Nextcloud/iTunes && ln -s ~/Nextcloud/iTunes/Backup/ .
 ```
 
 iTunes doesn't mind having a symlink here, so iPhone/iPad/iPod backups go into the cloud just fine.
