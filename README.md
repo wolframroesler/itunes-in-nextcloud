@@ -66,13 +66,18 @@ Your Nextcloud client is now set up to sync two Nextcloud accounts to your Mac: 
 
 ## Mobile Device Backups
 
-The symlink-into-Nextcloud works fine with mobile backups, however:
+The symlink-into-Nextcloud works fine with mobile backups, so you can back up your iPhone/iPad/iWhatever backups into your regular Nextcloud like this:
 
 ```sh
-$ cd "~/Library/Application Support/MobileSync"
+$ cd ~/Library/Application\ Support/MobileSync/
 $ mv Backup ~/Nextcloud/iTunes && ln -s ~/Nextcloud/iTunes/Backup/ .
 ```
 
-iTunes doesn't mind having a symlink here, so iPhone/iPad/iPod backups go into the cloud just fine.
+Or, to back them up into the `itunes` Nextcloud account we created above:
+
+```s
+$ cd ~/Library/Application\ Support/MobileSync/
+$ mv Backup ~/Music/iTunes && ln -s ~/Music/iTunes/Backup/ .
+```
 
 *Wolfram Rösler • wolfram@roesler-ac.de • https://twitter.com/wolframroesler • https://github.com/wolframroesler*
