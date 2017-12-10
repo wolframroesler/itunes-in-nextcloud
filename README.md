@@ -75,7 +75,7 @@ $ mv Backup ~/Nextcloud/iTunes && ln -s ~/Nextcloud/iTunes/Backup/ .
 
 Or, to back them up into the `itunes` Nextcloud account we created above:
 
-```s
+```sh
 $ cd ~/Library/Application\ Support/MobileSync/
 $ mv Backup ~/Music/iTunes && ln -s ~/Music/iTunes/Backup/ .
 ```
