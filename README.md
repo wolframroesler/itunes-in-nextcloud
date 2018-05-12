@@ -34,7 +34,7 @@ $ for i in Books Downloads "Home Videos" "Mobile Applications" Movies Music Tone
 
 This will work fine with Dropbox (as shown above) but not with Nextcloud because the Nextcloud client software doesn't follow symlinks.
 
-The second idea is to do it the other way around, move your iTunes folders into a cloud-synced directory and set up symlink to make iTunes find them:
+The second idea is to do it the other way around, move your iTunes folders into a cloud-synced directory and set up symlinks to make iTunes find them:
 
 ```sh
 $ mkdir ~/Nextcloud/iTunes
@@ -80,4 +80,4 @@ $ cd ~/Library/Application\ Support/MobileSync/
 $ mv Backup ~/Music/iTunes && ln -s ~/Music/iTunes/Backup/ .
 ```
 
-*Wolfram Rösler • wolfram@roesler-ac.de • https://twitter.com/wolframroesler • https://github.com/wolframroesler*
+*Wolfram Rösler • wolfram@roesler-ac.de • https://github.com/wolframroesler • https://twitter.com/wolframroesler • https://www.linkedin.com/in/wolframroesler/*
