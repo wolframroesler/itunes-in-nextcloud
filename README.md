@@ -80,4 +80,4 @@ $ cd ~/Library/Application\ Support/MobileSync/
 $ mv Backup ~/Music/iTunes && ln -s ~/Music/iTunes/Backup/ .
 ```
 
-*Wolfram Rösler • wolfram@roesler-ac.de • https://github.com/wolframroesler • https://twitter.com/wolframroesler • https://www.linkedin.com/in/wolframroesler/*
+*Wolfram Rösler • wolfram@roesler-ac.de • https://gitlab.com/wolframroesler • https://twitter.com/wolframroesler • https://www.linkedin.com/in/wolframroesler/*
